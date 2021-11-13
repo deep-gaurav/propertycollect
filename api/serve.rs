@@ -24,12 +24,11 @@ async fn main() -> Result<()> {
             Ok::<_, Infallible>(async_graphql_warp::Response::from(resp))
         },
     );
-    let graphql_playground = warp::path::end().and(warp::get()).map(|| {
+    let filter = warp::post().and(filter);
+    let graphql_playground = warp::get().map(|| {
         warp::http::Response::builder()
             .header("content-type", "text/html")
-            .body(playground_source(
-                GraphQLPlaygroundConfig::new("/").subscription_endpoint("/"),
-            ))
+            .body(playground_source(GraphQLPlaygroundConfig::new("/api")))
     });
     let final_filter = graphql_playground.or(filter);
     // Convert them to a warp service (a tower service implmentation)
