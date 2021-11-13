@@ -50,6 +50,13 @@ pub struct NoBrokerProperty {
     #[serde(rename = "type")]
     _type: String,
     deposit: i64,
+    #[serde(rename = "propertySize")]
+    property_size: String,
+    #[serde(rename = "shortUrl")]
+    short_url: String,
+    location: String,
+    longitude: f64,
+    latitude: f64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
