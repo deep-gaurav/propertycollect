@@ -31,7 +31,7 @@ async fn main() -> Result<()> {
                 GraphQLPlaygroundConfig::new("/").subscription_endpoint("/"),
             ))
     });
-    let final_filter = filter.or(graphql_playground);
+    let final_filter = graphql_playground.or(filter);
     // Convert them to a warp service (a tower service implmentation)
 
     // using `warp::service()`
