@@ -6,9 +6,6 @@
     },
     "routes": [
         {
-            "handle": "filesystem"
-        },
-        {
             "src": "/api.*",
             "dest": "/api/serve.rs"
         }
