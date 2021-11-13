@@ -3,5 +3,14 @@
         "api/**/*.rs": {
             "runtime": "vercel-rust@3.0.0"
         }
-    }
+    },
+    "routes": [
+        {
+            "handle": "filesystem"
+        },
+        {
+            "src": "/api/.*",
+            "dest": "/api/serve.rs"
+        }
+    ]
 }
