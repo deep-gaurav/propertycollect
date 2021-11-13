@@ -9,7 +9,7 @@
             "handle": "filesystem"
         },
         {
-            "src": "/api/.*",
+            "src": "/api.*",
             "dest": "/api/serve.rs"
         }
     ]
