@@ -30,7 +30,13 @@ async fn main() -> Result<()> {
             .header("content-type", "text/html")
             .body(playground_source(GraphQLPlaygroundConfig::new("/api/")))
     });
-    let final_filter = graphql_playground.or(filter);
+    let final_filter = graphql_playground.or(filter).with(
+        warp::cors()
+            .allow_any_origin()
+            .allow_methods(vec!["GET", "POST", "DELETE", "OPTIONS"])
+            .allow_headers(vec!["Content-Type"])
+            .build(),
+    );
     // Convert them to a warp service (a tower service implmentation)
 
     // using `warp::service()`

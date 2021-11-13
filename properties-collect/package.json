@@ -1,0 +1,31 @@
+{
+  "name": "properties-collect",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "gen": "graphql-codegen --config codegen.yml"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.17",
+    "@graphql-codegen/typescript-operations": "^2.2.0",
+    "graphql": "^16.0.1",
+    "next": "12.0.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.2.2",
+    "@types/node": "16.11.7",
+    "@types/react": "17.0.34",
+    "eslint": "7",
+    "eslint-config-next": "12.0.3",
+    "typescript": "4.4.4",
+    "@graphql-codegen/typescript": "2.3.1",
+    "@graphql-codegen/typescript-operations": "2.2.0",
+    "@graphql-codegen/typescript-react-apollo": "3.2.1",
+    "@graphql-codegen/introspection": "2.1.0"
+  }
+}

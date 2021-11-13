@@ -1,0 +1,41 @@
+fragment prediction on NoBrokerPrediction {
+  name
+  placeId
+  description
+  id
+}
+fragment property on NoBrokerProperty {
+  rent
+  type
+  deposit
+  balconies
+  negotiable
+  location
+  latitude
+  longitude
+  shortUrl
+}
+fragment place on NoBrokerPlaceDetail {
+  placeId
+  properties(pageNo: $pageNo) {
+    ...property
+  }
+}
+
+query search($query: String!) {
+  nobroker {
+    searchCity(query: $query, city: "bangalore") {
+      predictions {
+        ...prediction
+      }
+    }
+  }
+}
+
+query properties($placeId: String!, $pageNo: Int!) {
+  nobroker {
+    place(placeId: $placeId) {
+      ...place
+    }
+  }
+}

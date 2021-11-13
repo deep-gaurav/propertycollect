@@ -1,0 +1,12 @@
+overwrite: true
+schema: "https://properties.sodeep.me/api/serve.rs"
+documents: "graphql/*.graphql"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
