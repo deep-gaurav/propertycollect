@@ -78,7 +78,7 @@ export type NoBrokerProperty = {
   location: Scalars['String'];
   longitude: Scalars['Float'];
   negotiable: Scalars['Boolean'];
-  propertySize: Scalars['String'];
+  propertySize: Scalars['Int'];
   rent: Scalars['Int'];
   shortUrl: Scalars['String'];
   type: Scalars['String'];
@@ -93,7 +93,7 @@ export type PredictionFragment = { __typename?: 'NoBrokerPrediction', name: stri
 
 export type PropertyFragment = { __typename?: 'NoBrokerProperty', rent: number, type: string, deposit: number, balconies: number, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string };
 
-export type PlaceFragment = { __typename?: 'NoBrokerPlaceDetail', placeId: string, properties: Array<{ __typename?: 'NoBrokerProperty', rent: number, type: string, deposit: number, balconies: number, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string }> };
+export type PlaceFragment = { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: Array<{ __typename?: 'NoBrokerProperty', rent: number, type: string, deposit: number, balconies: number, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string }> };
 
 export type SearchQueryVariables = Exact<{
   query: Scalars['String'];
@@ -108,7 +108,7 @@ export type PropertiesQueryVariables = Exact<{
 }>;
 
 
-export type PropertiesQuery = { __typename?: 'Query', nobroker: { __typename?: 'NoBroker', place: { __typename?: 'NoBrokerPlaceDetail', placeId: string, properties: Array<{ __typename?: 'NoBrokerProperty', rent: number, type: string, deposit: number, balconies: number, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string }> } } };
+export type PropertiesQuery = { __typename?: 'Query', nobroker: { __typename?: 'NoBroker', place: { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: Array<{ __typename?: 'NoBrokerProperty', rent: number, type: string, deposit: number, balconies: number, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string }> } } };
 
 export const PredictionFragmentDoc = gql`
     fragment prediction on NoBrokerPrediction {
@@ -134,6 +134,15 @@ export const PropertyFragmentDoc = gql`
 export const PlaceFragmentDoc = gql`
     fragment place on NoBrokerPlaceDetail {
   placeId
+  geometry {
+    location {
+      lng
+      lat
+    }
+  }
+  name
+  reference
+  formattedAddress
   properties(pageNo: $pageNo) {
     ...property
   }

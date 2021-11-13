@@ -17,6 +17,15 @@ fragment property on NoBrokerProperty {
 }
 fragment place on NoBrokerPlaceDetail {
   placeId
+  geometry{
+    location{
+      lng
+      lat
+    }
+  }
+  name
+  reference
+  formattedAddress
   properties(pageNo: $pageNo) {
     ...property
   }
