@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import { usePropertiesQuery } from "../src/generated/graphql";
+import { usePropertiesQuery } from "./generated/graphql";
 
 const Properties: NextPage<{ placeId: string }> = props => {
     const [isBrowser, setIsBrowser] = useState(false);

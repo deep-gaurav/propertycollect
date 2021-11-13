@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchQuery } from "../src/generated/graphql";
 import dynamic from "next/dynamic";
 // import Properties from "./properties";
@@ -15,10 +15,16 @@ const Search: NextPage = props => {
     // const {activeItem,setActive} = useState(null);
     const Properties = useMemo(
         () => dynamic(
-            () => import('./properties'), // replace '@components/map' with your component's location
+            () => import('../src/properties'), // replace '@components/map' with your component's location
             { ssr: false } // This line is important. It's what prevents server-side render
         ),
         [location]
+    )
+    const [isBrowser, setBrowser] = useState(false);
+    useEffect(
+        () => {
+            setBrowser(true)
+        }
     )
     return (
         <div className="h100"
@@ -65,7 +71,7 @@ const Search: NextPage = props => {
             </div>
 
             {
-                location ?
+                location && isBrowser ?
                     <Properties placeId={location} />
                     : null
             }
