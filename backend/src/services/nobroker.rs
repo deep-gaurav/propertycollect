@@ -51,7 +51,7 @@ pub struct NoBrokerProperty {
     _type: String,
     deposit: i64,
     #[serde(rename = "propertySize")]
-    property_size: String,
+    property_size: i64,
     #[serde(rename = "shortUrl")]
     short_url: String,
     location: String,
