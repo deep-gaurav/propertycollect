@@ -11,7 +11,7 @@ log = "0.4"
 warp = "0.3"
 warp_lambda = { git = "https://github.com/deep-gaurav/warp_lambda.git", branch = "main" }
 anyhow = "1"
-propertycollect = { path = "../../backend" }
+propertycollect = { git = "https://github.com/deep-gaurav/propertycollect.git" }
 async-graphql = "2.0"
 async-graphql-warp = "2.0"
 
