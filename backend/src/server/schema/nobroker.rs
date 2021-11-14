@@ -2,7 +2,7 @@ use async_graphql::*;
 
 use crate::services::nobroker::{
     get_place_details, get_predictions, get_properties, NoBrokerPlaceDetail, NoBrokerPredictions,
-    NoBrokerProperty,
+    NoBrokerPropertiesResult, NoBrokerProperty,
 };
 
 pub struct NoBroker {
@@ -44,7 +44,6 @@ impl NoBrokerPlaceDetail {
             &self.name,
         )
         .await?;
-        let result = result;
 
         Ok(result)
     }
