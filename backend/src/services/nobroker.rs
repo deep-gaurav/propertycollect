@@ -57,12 +57,26 @@ pub struct NoBrokerProperty {
     location: String,
     longitude: f64,
     latitude: f64,
+    parking: String,
+    id: String,
+    propertyTitle: String,
+    waterSupply: String,
+    photoAvailable: bool,
+    leaseType: String,
+    thumbnailImage: Option<String>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, SimpleObject)]
+pub struct NoBrokerPropertyOtherParams {
+    total_count: i64,
+    count: i64,
+}
+
+#[derive(Debug, Serialize, Deserialize, SimpleObject)]
 pub struct NoBrokerPropertiesResult {
     pub status: String,
     pub data: Vec<NoBrokerProperty>,
+    pub other_params: NoBrokerPropertyOtherParams,
 }
 
 pub async fn get_predictions(

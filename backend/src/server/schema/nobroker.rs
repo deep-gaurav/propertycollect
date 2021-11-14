@@ -33,7 +33,7 @@ impl NoBrokerPlaceDetail {
     async fn properties(
         &self,
         page_no: i64,
-    ) -> Result<Vec<NoBrokerProperty>, async_graphql::Error> {
+    ) -> Result<NoBrokerPropertiesResult, async_graphql::Error> {
         let client = surf::client();
         let result = get_properties(
             &client,
@@ -44,7 +44,7 @@ impl NoBrokerPlaceDetail {
             &self.name,
         )
         .await?;
-        let result = result.data;
+        let result = result;
 
         Ok(result)
     }
