@@ -73,6 +73,7 @@ pub struct NoBrokerPropertyOtherParams {
 }
 
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
+#[serde(rename_all = "camelCase")]
 pub struct NoBrokerPropertiesResult {
     pub status: String,
     pub data: Vec<NoBrokerProperty>,

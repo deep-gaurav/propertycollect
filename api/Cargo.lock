@@ -1665,7 +1665,6 @@ dependencies = [
 [[package]]
 name = "propertycollect"
 version = "0.1.0"
-source = "git+https://github.com/deep-gaurav/propertycollect.git#89fb4d6cffb76379320ed38fd036bfa64aef4d64"
 dependencies = [
  "anyhow",
  "async-graphql",
