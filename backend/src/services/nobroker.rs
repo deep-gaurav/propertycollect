@@ -45,24 +45,24 @@ pub struct NoBrokerGeometry {
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
 #[serde(rename_all = "camelCase")]
 pub struct NoBrokerProperty {
-    rent: i64,
+    rent: Option<i64>,
     balconies: Option<i64>,
-    negotiable: bool,
+    negotiable: Option<bool>,
     #[serde(rename = "type")]
-    _type: String,
-    deposit: i64,
+    _type: Option<String>,
+    deposit: Option<i64>,
     #[serde(rename = "propertySize")]
-    property_size: i64,
+    property_size: Option<i64>,
     #[serde(rename = "shortUrl")]
-    short_url: String,
-    location: String,
-    longitude: f64,
-    latitude: f64,
+    short_url: Option<String>,
+    location: Option<String>,
+    longitude: Option<f64>,
+    latitude: Option<f64>,
     parking: Option<String>,
     id: String,
-    property_title: String,
+    property_title: Option<String>,
     water_supply: Option<String>,
-    photo_available: bool,
+    photo_available: Option<bool>,
     lease_type: Option<String>,
     thumbnail_image: Option<String>,
 }
