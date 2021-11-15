@@ -45,7 +45,7 @@ pub struct NoBrokerGeometry {
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
 pub struct NoBrokerProperty {
     rent: i64,
-    balconies: i64,
+    balconies: Option<i64>,
     negotiable: bool,
     #[serde(rename = "type")]
     _type: String,
