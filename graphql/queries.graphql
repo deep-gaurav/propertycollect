@@ -5,6 +5,7 @@ fragment prediction on NoBrokerPrediction {
   id
 }
 fragment property on NoBrokerProperty {
+  id
   rent
   type
   deposit
@@ -14,6 +15,11 @@ fragment property on NoBrokerProperty {
   latitude
   longitude
   shortUrl
+  thumbnailImage
+  propertyTitle
+  photoAvailable,
+  leaseType,
+  parking
 }
 fragment place on NoBrokerPlaceDetail {
   placeId
@@ -27,7 +33,14 @@ fragment place on NoBrokerPlaceDetail {
   reference
   formattedAddress
   properties(pageNo: $pageNo) {
-    ...property
+    status
+    data{
+      ...property
+    }
+    otherParams{
+      totalCount
+      count
+    }
   }
 }
 
