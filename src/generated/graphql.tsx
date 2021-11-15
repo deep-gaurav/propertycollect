@@ -80,22 +80,22 @@ export type NoBrokerPropertiesResult = {
 export type NoBrokerProperty = {
   __typename?: 'NoBrokerProperty';
   balconies?: Maybe<Scalars['Int']>;
-  deposit: Scalars['Int'];
+  deposit?: Maybe<Scalars['Int']>;
   id: Scalars['String'];
-  latitude: Scalars['Float'];
-  leaseType: Scalars['String'];
-  location: Scalars['String'];
-  longitude: Scalars['Float'];
-  negotiable: Scalars['Boolean'];
-  parking: Scalars['String'];
-  photoAvailable: Scalars['Boolean'];
-  propertySize: Scalars['Int'];
-  propertyTitle: Scalars['String'];
-  rent: Scalars['Int'];
-  shortUrl: Scalars['String'];
+  latitude?: Maybe<Scalars['Float']>;
+  leaseType?: Maybe<Scalars['String']>;
+  location?: Maybe<Scalars['String']>;
+  longitude?: Maybe<Scalars['Float']>;
+  negotiable?: Maybe<Scalars['Boolean']>;
+  parking?: Maybe<Scalars['String']>;
+  photoAvailable?: Maybe<Scalars['Boolean']>;
+  propertySize?: Maybe<Scalars['Int']>;
+  propertyTitle?: Maybe<Scalars['String']>;
+  rent?: Maybe<Scalars['Int']>;
+  shortUrl?: Maybe<Scalars['String']>;
   thumbnailImage?: Maybe<Scalars['String']>;
-  type: Scalars['String'];
-  waterSupply: Scalars['String'];
+  type?: Maybe<Scalars['String']>;
+  waterSupply?: Maybe<Scalars['String']>;
 };
 
 export type NoBrokerPropertyOtherParams = {
@@ -111,9 +111,9 @@ export type Query = {
 
 export type PredictionFragment = { __typename?: 'NoBrokerPrediction', name: string, placeId: string, description: string, id: string };
 
-export type PropertyFragment = { __typename?: 'NoBrokerProperty', id: string, rent: number, type: string, deposit: number, balconies?: number | null | undefined, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string, thumbnailImage?: string | null | undefined, propertyTitle: string, photoAvailable: boolean, leaseType: string, parking: string };
+export type PropertyFragment = { __typename?: 'NoBrokerProperty', id: string, rent?: number | null | undefined, type?: string | null | undefined, deposit?: number | null | undefined, balconies?: number | null | undefined, negotiable?: boolean | null | undefined, location?: string | null | undefined, latitude?: number | null | undefined, longitude?: number | null | undefined, shortUrl?: string | null | undefined, thumbnailImage?: string | null | undefined, propertyTitle?: string | null | undefined, photoAvailable?: boolean | null | undefined, leaseType?: string | null | undefined, parking?: string | null | undefined };
 
-export type PlaceFragment = { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: { __typename?: 'NoBrokerPropertiesResult', status: string, data: Array<{ __typename?: 'NoBrokerProperty', id: string, rent: number, type: string, deposit: number, balconies?: number | null | undefined, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string, thumbnailImage?: string | null | undefined, propertyTitle: string, photoAvailable: boolean, leaseType: string, parking: string }>, otherParams: { __typename?: 'NoBrokerPropertyOtherParams', totalCount: number, count: number } } };
+export type PlaceFragment = { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: { __typename?: 'NoBrokerPropertiesResult', status: string, data: Array<{ __typename?: 'NoBrokerProperty', id: string, rent?: number | null | undefined, type?: string | null | undefined, deposit?: number | null | undefined, balconies?: number | null | undefined, negotiable?: boolean | null | undefined, location?: string | null | undefined, latitude?: number | null | undefined, longitude?: number | null | undefined, shortUrl?: string | null | undefined, thumbnailImage?: string | null | undefined, propertyTitle?: string | null | undefined, photoAvailable?: boolean | null | undefined, leaseType?: string | null | undefined, parking?: string | null | undefined }>, otherParams: { __typename?: 'NoBrokerPropertyOtherParams', totalCount: number, count: number } } };
 
 export type SearchQueryVariables = Exact<{
   query: Scalars['String'];
@@ -128,7 +128,7 @@ export type PropertiesQueryVariables = Exact<{
 }>;
 
 
-export type PropertiesQuery = { __typename?: 'Query', nobroker: { __typename?: 'NoBroker', place: { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: { __typename?: 'NoBrokerPropertiesResult', status: string, data: Array<{ __typename?: 'NoBrokerProperty', id: string, rent: number, type: string, deposit: number, balconies?: number | null | undefined, negotiable: boolean, location: string, latitude: number, longitude: number, shortUrl: string, thumbnailImage?: string | null | undefined, propertyTitle: string, photoAvailable: boolean, leaseType: string, parking: string }>, otherParams: { __typename?: 'NoBrokerPropertyOtherParams', totalCount: number, count: number } } } } };
+export type PropertiesQuery = { __typename?: 'Query', nobroker: { __typename?: 'NoBroker', place: { __typename?: 'NoBrokerPlaceDetail', placeId: string, name: string, reference: string, formattedAddress: string, geometry: { __typename?: 'NoBrokerGeometry', location: { __typename?: 'NoBrokerLocation', lng: number, lat: number } }, properties: { __typename?: 'NoBrokerPropertiesResult', status: string, data: Array<{ __typename?: 'NoBrokerProperty', id: string, rent?: number | null | undefined, type?: string | null | undefined, deposit?: number | null | undefined, balconies?: number | null | undefined, negotiable?: boolean | null | undefined, location?: string | null | undefined, latitude?: number | null | undefined, longitude?: number | null | undefined, shortUrl?: string | null | undefined, thumbnailImage?: string | null | undefined, propertyTitle?: string | null | undefined, photoAvailable?: boolean | null | undefined, leaseType?: string | null | undefined, parking?: string | null | undefined }>, otherParams: { __typename?: 'NoBrokerPropertyOtherParams', totalCount: number, count: number } } } } };
 
 export const PredictionFragmentDoc = gql`
     fragment prediction on NoBrokerPrediction {
