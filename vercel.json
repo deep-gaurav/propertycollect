@@ -7,7 +7,7 @@
     "rewrites": [
         {
             "source": "/api(.*)",
-            "has": "/api/serve.rs"
+            "destination": "/api/serve.rs"
         }
     ],
     "headers": [
