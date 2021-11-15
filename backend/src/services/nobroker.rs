@@ -43,6 +43,7 @@ pub struct NoBrokerGeometry {
 }
 
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
+#[serde(rename_all = "camelCase")]
 pub struct NoBrokerProperty {
     rent: i64,
     balconies: Option<i64>,
@@ -57,13 +58,13 @@ pub struct NoBrokerProperty {
     location: String,
     longitude: f64,
     latitude: f64,
-    parking: String,
+    parking: Option<String>,
     id: String,
-    propertyTitle: String,
-    waterSupply: String,
-    photoAvailable: bool,
-    leaseType: String,
-    thumbnailImage: Option<String>,
+    property_title: String,
+    water_supply: Option<String>,
+    photo_available: bool,
+    lease_type: Option<String>,
+    thumbnail_image: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
