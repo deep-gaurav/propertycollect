@@ -46,7 +46,7 @@ fragment place on NoBrokerPlaceDetail {
 
 query search($query: String!) {
   nobroker {
-    searchCity(query: $query, city: "bangalore") {
+    searchCity(query: $query, city: "noida") {
       predictions {
         ...prediction
       }

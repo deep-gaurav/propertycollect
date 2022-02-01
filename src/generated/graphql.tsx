@@ -184,7 +184,7 @@ export const PlaceFragmentDoc = gql`
 export const SearchDocument = gql`
     query search($query: String!) {
   nobroker {
-    searchCity(query: $query, city: "bangalore") {
+    searchCity(query: $query, city: "noida") {
       predictions {
         ...prediction
       }
