@@ -133,7 +133,7 @@ pub async fn get_properties(
     let search_param = base64::encode(&search_param);
     let resp = client
         .get(format!(
-            "https://www.nobroker.in/api/v1/multi/property/filter?pageNo={}&searchParam={}&radius=2.0&sharedAccomodation=0",
+            "https://www.nobroker.in/api/v1/multi/property/filter?pageNo={}&searchParam={}&radius=40.0&sharedAccomodation=0",
             page_no,
             search_param,
         ))
