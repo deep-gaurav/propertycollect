@@ -65,7 +65,7 @@ const Properties: NextPage<{ placeId: string }> = props => {
     let types_unique = types_all?.filter((item, i, ar) => ar.indexOf(item) === i);
 
     let lease_type_all = properties?.map((p) => p.leaseType);
-    let lease_type_unique = lease_type_all?.filter((item, i, ar) => ar.indexOf(item));
+    let lease_type_unique = lease_type_all?.filter((item, i, ar) => ar.indexOf(item) === i);
 
     let applied_filter_properties = properties;
     applied_filter_properties = applied_filter_properties?.filter
@@ -133,6 +133,8 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                     </div>
                                 </div>
                                 <div>
+                                    <label className="label">Property Type</label>
+
                                     {
                                         types_unique?.map(
                                             (type) => {
@@ -171,6 +173,8 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                     }
                                 </div>
                                 <div>
+                                    <label className="label">Lease Type</label>
+
                                     {
                                         lease_type_unique?.map(
                                             (type) => {
