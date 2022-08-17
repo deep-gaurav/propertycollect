@@ -59,9 +59,14 @@ const Properties: NextPage<{ placeId: string }> = props => {
     const [maxDeposit, setMaxDeposit] = useState(Infinity);
     const [maxRent, setMaxRent] = useState(Infinity);
     const [typeFilter, setTypeFilter] = useState<Array<string>>([]);
+    const [leaseTypeFilter, setLeaseTypeFilter] = useState<Array<string>>([]);
 
     let types_all = properties?.map((p) => p.type);
     let types_unique = types_all?.filter((item, i, ar) => ar.indexOf(item) === i);
+
+    let lease_type_all = properties?.map((p) => p.leaseType);
+    let lease_type_unique = lease_type_all?.filter((item, i, ar) => ar.indexOf(item));
+
     let applied_filter_properties = properties;
     applied_filter_properties = applied_filter_properties?.filter
         (
@@ -72,6 +77,12 @@ const Properties: NextPage<{ placeId: string }> = props => {
         applied_filter_properties = applied_filter_properties?.filter
             (
                 (p) => typeFilter.some(t2 => p.type == t2)
+            )
+    }
+    if (leaseTypeFilter?.length) {
+        applied_filter_properties = applied_filter_properties?.filter
+            (
+                (p) => leaseTypeFilter.some(t2 => p.leaseType == t2)
             )
     }
     // const {loc} = 
@@ -141,6 +152,44 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                                                     )
                                                                 } else {
                                                                     setTypeFilter(
+                                                                        [
+                                                                            ...typeFilter.filter(
+                                                                                (t) => t != type
+                                                                            )
+                                                                        ]
+                                                                    )
+                                                                }
+                                                            }
+                                                        }
+
+                                                    >
+                                                        {type}
+                                                    </button>
+                                                )
+                                            }
+                                        )
+                                    }
+                                </div>
+                                <div>
+                                    {
+                                        lease_type_unique?.map(
+                                            (type) => {
+                                                let is_active = leaseTypeFilter?.includes(type!);
+                                                return (
+                                                    <button className={
+                                                        `button ${is_active ? "is-primary" : ""}`
+                                                    }
+                                                        onClick={
+                                                            () => {
+                                                                if (!is_active) {
+                                                                    setLeaseTypeFilter(
+                                                                        [
+                                                                            ...typeFilter,
+                                                                            type!,
+                                                                        ]
+                                                                    )
+                                                                } else {
+                                                                    setLeaseTypeFilter(
                                                                         [
                                                                             ...typeFilter.filter(
                                                                                 (t) => t != type

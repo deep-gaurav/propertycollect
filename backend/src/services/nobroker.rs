@@ -65,6 +65,7 @@ pub struct NoBrokerProperty {
     photo_available: Option<bool>,
     lease_type: Option<String>,
     thumbnail_image: Option<String>,
+    last_update_date: Option<i64>,
 }
 
 #[derive(Debug, Serialize, Deserialize, SimpleObject)]
