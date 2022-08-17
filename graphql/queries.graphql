@@ -19,7 +19,8 @@ fragment property on NoBrokerProperty {
   propertyTitle
   photoAvailable,
   leaseType,
-  parking
+  parking,
+  lastUpdateDate,
 }
 fragment place on NoBrokerPlaceDetail {
   placeId

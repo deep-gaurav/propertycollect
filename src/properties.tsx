@@ -1,4 +1,5 @@
 import { useApolloClient } from "@apollo/client";
+import moment from "moment";
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -67,6 +68,8 @@ const Properties: NextPage<{ placeId: string }> = props => {
     let lease_type_all = properties?.map((p) => p.leaseType);
     let lease_type_unique = lease_type_all?.filter((item, i, ar) => ar.indexOf(item) === i);
 
+    let [minUpdatedDate, setMinUpdateDate] = useState<Date | null>(null)
+
     let applied_filter_properties = properties;
     applied_filter_properties = applied_filter_properties?.filter
         (
@@ -85,6 +88,16 @@ const Properties: NextPage<{ placeId: string }> = props => {
                 (p) => leaseTypeFilter.some(t2 => p.leaseType == t2)
             )
     }
+    if (minUpdatedDate) {
+        const _minUndatedDate = minUpdatedDate;
+        console.log(_minUndatedDate);
+        applied_filter_properties = applied_filter_properties?.filter(
+            (p) => {
+                return p.lastUpdateDate && p.lastUpdateDate > _minUndatedDate.valueOf();
+            }
+        )
+    }
+
     // const {loc} = 
     if (isBrowser && firstdata.data) {
         return (
@@ -128,6 +141,17 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                         <input className="input" type="number" placeholder={maxDeposit.toString()} value={maxDeposit}
                                             onChange={
                                                 (val) => setMaxDeposit(parseInt(val.currentTarget.value))
+                                            }
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="field">
+                                    <label className="label">Min Updated Date</label>
+                                    <div className="control">
+                                        <input className="input" type="date" value={minUpdatedDate ? (moment(minUpdatedDate).format('YYYY-MM-DD')) : undefined}
+                                            onChange={
+                                                (val) => setMinUpdateDate(moment(val.target.value).toDate())
                                             }
                                         />
                                     </div>
@@ -188,14 +212,14 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                                                 if (!is_active) {
                                                                     setLeaseTypeFilter(
                                                                         [
-                                                                            ...typeFilter,
+                                                                            ...leaseTypeFilter,
                                                                             type!,
                                                                         ]
                                                                     )
                                                                 } else {
                                                                     setLeaseTypeFilter(
                                                                         [
-                                                                            ...typeFilter.filter(
+                                                                            ...leaseTypeFilter.filter(
                                                                                 (t) => t != type
                                                                             )
                                                                         ]
@@ -261,7 +285,9 @@ const Properties: NextPage<{ placeId: string }> = props => {
                                                             </div>
                                                             <div>
                                                                 Rent {property.rent}<br />
-                                                                Deposit {property.deposit}
+                                                                Deposit {property.deposit}<br />
+                                                                Last Updated {moment(property.lastUpdateDate).format('DD-MM-YYYY')}<br />
+                                                                Lease Type {property.leaseType}
                                                             </div>
                                                             <div>
                                                                 <a href={property.shortUrl ?? "#"}>
